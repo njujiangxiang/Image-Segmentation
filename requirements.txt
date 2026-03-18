@@ -1,0 +1,18 @@
+# SAM 图像分割工具 - 依赖包
+
+# 核心依赖
+numpy>=1.20.0
+Pillow>=9.0.0
+
+# SAM 模型 (Meta 官方)
+segment-anything>=1.0
+
+# PyTorch (根据系统选择)
+# CPU 版本:
+torch>=2.0.0
+# GPU 版本 (如需 CUDA 支持):
+# torch>=2.0.0+cu118
+
+# 可选依赖 (用于模型加载)
+torchvision>=0.15.0
+opencv-python>=4.7.0
