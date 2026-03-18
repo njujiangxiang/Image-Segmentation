@@ -1,0 +1,78 @@
+{
+  "_comment": "逆光检测工具配置文件",
+  "_description": "调整以下参数以优化检测效果",
+  
+  "histogram": {
+    "_comment": "直方图分析配置",
+    "peak_distance_threshold": 80,
+    "_peak_distance_comment": "暗部峰值与亮部峰值的最小距离 (0-255)，越大越严格",
+    
+    "min_dark_ratio": 0.2,
+    "_min_dark_ratio_comment": "暗部像素的最小比例，建议 0.15-0.3",
+    
+    "min_bright_ratio": 0.2,
+    "_min_bright_ratio_comment": "亮部像素的最小比例，建议 0.15-0.3",
+    
+    "peak_ratio_min": 0.3,
+    "_peak_ratio_min_comment": "暗亮部比例的最小值，防止极端情况",
+    
+    "peak_ratio_max": 3.0,
+    "_peak_ratio_max_comment": "暗亮部比例的最大值，防止极端情况"
+  },
+  
+  "spatial": {
+    "_comment": "空间分布分析配置",
+    "center_edge_ratio_threshold": 0.7,
+    "_center_edge_ratio_comment": "中心 - 边缘亮度比阈值，小于此值判定为逆光",
+    
+    "center_size_ratio": 0.25,
+    "_center_size_ratio_comment": "中心区域大小占图像的比例 (0-1)"
+  },
+  
+  "halo": {
+    "_comment": "边缘光晕检测配置",
+    "halo_ratio_threshold": 1.3,
+    "_halo_ratio_comment": "边缘 - 非边缘亮度比阈值，大于此值判定有光晕",
+    
+    "canny_threshold1": 50,
+    "_canny_t1_comment": "Canny 边缘检测的低阈值",
+    
+    "canny_threshold2": 150,
+    "_canny_t2_comment": "Canny 边缘检测的高阈值"
+  },
+  
+  "chrominance": {
+    "_comment": "色度分析配置（基于 SPIE 论文）",
+    "saturation_diff_threshold": 30,
+    "_saturation_diff_comment": "暗部与亮部饱和度差异阈值",
+    
+    "bright_threshold": 200,
+    "_bright_threshold_comment": "判定为亮部的亮度阈值 (0-255)",
+    
+    "dark_threshold": 80,
+    "_dark_threshold_comment": "判定为暗部的亮度阈值 (0-255)"
+  },
+  
+  "comprehensive": {
+    "_comment": "综合评分配置",
+    "weights": {
+      "histogram": 0.35,
+      "_histogram_comment": "直方图分析权重（最重要）",
+      
+      "spatial": 0.30,
+      "_spatial_comment": "空间分布权重",
+      
+      "halo": 0.20,
+      "_halo_comment": "光晕检测权重",
+      
+      "chrominance": 0.15,
+      "_chrominance_comment": "色度分析权重"
+    },
+    
+    "confidence_threshold": 0.5,
+    "_confidence_comment": "综合置信度阈值，大于此值判定为逆光",
+    
+    "vote_threshold": 3,
+    "_vote_comment": "投票阈值，多少个方法判定为逆光则最终判定为逆光"
+  }
+}
