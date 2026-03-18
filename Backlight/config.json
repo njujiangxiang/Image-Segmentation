@@ -1,0 +1,10 @@
+{
+    "gamma": 1.5,
+    "clip_limit": 2.0,
+    "tile_grid_size": 8,
+    "blur_kernel_size": 51,
+    "brightness_factor": 1.2,
+    "shadow_threshold": 0.3,
+    "highlight_threshold": 0.8,
+    "hdr_strength": 0.7
+}
